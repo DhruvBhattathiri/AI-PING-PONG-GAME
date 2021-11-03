@@ -1,0 +1,16 @@
+.heading, .button
+{
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px white;
+}
+
+.instructions
+{
+    float: right;
+}
+
+body
+{
+    font-family: 'Fruktur', cursive;
+}
