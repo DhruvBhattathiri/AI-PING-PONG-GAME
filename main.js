@@ -1,5 +1,16 @@
+rightX = "";
+rigthY ="";
+score_right ="";
 
-/*created by prashant shukla */
+function gotPoses(results) 
+{
+  if (results.length > 0)
+  {
+    rightX = results[0].pose.right.wrist.x;
+    rigthY = results[0].pose.rigth.wrist.y;
+    score_right = results[0].pose.keypoints[10].score;
+  }
+}
 
 var paddle2 =10,paddle1=10;
 
@@ -23,16 +34,28 @@ var ball = {
 
 function setup(){
   var canvas =  createCanvas(700,600);
+  canvas.parent('canvas');
+
+  video.createCapture(700,600);
+  video.hide();
+  video.parent('canvas');
+
+  poseNet = ml5.poseNet(video, modelLoaded);
+  poseNet.on('pose', gotPoses);
 }
 
+function modelLoaded()
+{
+  console.log("Model is Loaded!");
+}
 
 function draw(){
 
  background(0); 
 
- fill("black");
- stroke("black");
- rect(680,0,20,700);
+ fill("rgba(245,34,100,1)");
+ stroke("brgba(231, 59,71");
+ circle(rightX, rigthY ,20,700, 45);
 
  fill("black");
  stroke("black");
